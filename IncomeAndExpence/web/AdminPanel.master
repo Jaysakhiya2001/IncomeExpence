@@ -1,0 +1,286 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminPanel.master.cs" Inherits="web_AdminPanel" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>Income &amp;Expense</title>
+
+   
+
+   
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="<%= ResolveClientUrl("~/web/AdminPanel/assets/media/favicons/favicon.png") %>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<%= ResolveClientUrl("~/web/AdminPanel/assets/media/favicons/favicon-192x192.png") %>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= ResolveClientUrl("~/web/AdminPanel/assets/media/favicons/apple-touch-icon-180x180.png") %>">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <!-- Fonts and OneUI framework -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" id="css-main" href="<%= ResolveClientUrl("~/web/AdminPanel/assets/css/oneui.min.css") %>">
+    <link rel="stylesheet"  href="<%= ResolveClientUrl("~/web/AdminPanel/assets/css/themes/bootstrap-material-datetimepicker.css") %>">
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+            <!-- Side Overlay-->
+
+            <!-- END Side Overlay -->
+
+            <!-- Sidebar -->
+            <!--
+                Sidebar Mini Mode - Display Helper classes
+
+                Adding 'smini-hide' class to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
+                Adding 'smini-show' class to an element will make it visible (opacity: 1) when the sidebar is in mini mode
+                    If you would like to disable the transition animation, make sure to also add the 'no-transition' class to your element
+
+                Adding 'smini-hidden' to an element will hide it when the sidebar is in mini mode
+                Adding 'smini-visible' to an element will show it (display: inline-block) only when the sidebar is in mini mode
+                Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
+            -->
+            <nav id="sidebar" aria-label="Main Navigation">
+                <!-- Side Header -->
+                <div class="content-header bg-white-5">
+                    <!-- Logo -->
+                    <a class="font-w600 text-dual" href="#">
+                        <span class="smini-visible">
+                            <i class="fa fa-circle-notch text-primary"></i>
+                        </span>
+                        <span class="smini-hide font-size-h5 tracking-wider">Income<span class="font-w400">Expense</span>
+                        </span>
+                    </a>
+                    <!-- END Logo -->
+
+                    <!-- Extra -->
+                        
+                    <!-- END Extra -->
+                </div>
+                <!-- END Side Header -->
+
+                <!-- Sidebar Scrolling -->
+                <div class="js-sidebar-scroll">
+                    <!-- Side Navigation -->
+                    <div class="content-side">
+                        <ul class="nav-main">
+                            <asp:ContentPlaceHolder ID="pageLinks" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </ul>
+                    </div>
+                    <!-- END Side Navigation -->
+                </div>
+                <!-- END Sidebar Scrolling -->
+            </nav>
+            <!-- END Sidebar -->
+
+            <!-- Header -->
+            <header id="page-header">
+                <!-- Header Content -->
+                <div class="content-header">
+                    <!-- Left Section -->
+                    <div class="d-flex align-items-center">
+                        <!-- Toggle Sidebar -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
+                        <button type="button" class="btn btn-sm btn-dual mr-2 d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                        <!-- END Toggle Sidebar -->
+
+                        <!-- Toggle Mini Sidebar -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
+                        <button type="button" class="btn btn-sm btn-dual mr-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                        <!-- END Toggle Mini Sidebar -->
+
+                       <%-- <!-- Apps Modal -->
+                        <!-- Opens the Apps modal found at the bottom of the page, after footer’s markup -->
+                        <button type="button" class="btn btn-sm btn-dual mr-2" data-toggle="modal" data-target="#one-modal-apps">
+                            <i class="fa fa-fw fa-cubes"></i>
+                        </button>
+                        <!-- END Apps Modal -->
+
+                        <!-- Open Search Section (visible on smaller screens) -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                        <button type="button" class="btn btn-sm btn-dual d-md-none" data-toggle="layout" data-action="header_search_on">
+                            <i class="fa fa-fw fa-search"></i>
+                        </button>
+                        <!-- END Open Search Section -->
+
+                        <!-- Search Form (visible on larger screens) -->
+                        <div class="d-none d-md-inline-block" action="be_pages_generic_search.html" method="POST">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-body border-0">
+                                        <i class="fa fa-fw fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Search Form -->--%>
+                    </div>
+                    <!-- END Left Section -->
+
+                    <!-- Right Section -->
+                    <div class="d-flex align-items-center">
+                        <!-- User Dropdown -->
+                        <div class="d-inline-block ml-2">
+                            <button type="button" class="btn btn-sm btn-dual d-flex align-items-center"  >
+                                <asp:Image runat="server" ID="imgUserProfile" CssClass="rounded-circle" Width="21px" Height="21px"  />
+                                <span class="d-none d-sm-inline-block ml-2">Hii,
+                                    <asp:Label runat="server" ID="lblDisplayName" ></asp:Label>
+                                </span>
+                            </button>
+                            
+                        </div>
+                        <!-- END User Dropdown -->
+
+                        <!-- Notifications Dropdown -->
+                        <%--<div class="dropdown d-inline-block ml-2">
+                            <button type="button" class="btn btn-sm btn-dual">
+                                <i class="fa fa-fw fa-bell"></i>
+                            </button>
+
+                        </div>--%>
+                        <!-- END Notifications Dropdown -->
+
+                        <!-- Toggle Side Overlay -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                        <asp:LinkButton runat="server" ID="btnLogOut" Cssclass="btn btn-sm btn-dual ml-2" OnClick="btnLogOut_Click" >
+                            <i class="fa fa-sign-out-alt">&nbsp;</i>
+                        </asp:LinkButton>
+                        <!-- END Toggle Side Overlay -->
+                    </div>
+                    <!-- END Right Section -->
+                </div>
+                <!-- END Header Content -->
+
+                <!-- Header Search -->
+                <div id="page-header-search" class="overlay-header bg-white">
+                    <div class="content-header">
+                        <div class="w-100">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                                    <button type="button" class="btn btn-alt-danger" data-toggle="layout" data-action="header_search_off">
+                                        <i class="fa fa-fw fa-times-circle"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Header Search -->
+
+                <!-- Header Loader -->
+                <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
+                <div id="page-header-loader" class="overlay-header bg-white">
+                    <div class="content-header">
+                        <div class="w-100 text-center">
+                            <i class="fa fa-fw fa-circle-notch fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Header Loader -->
+            </header>
+            <!-- END Header -->
+
+            <!-- Main Container -->
+            <main id="main-container">
+                <!-- Hero -->
+                <div class="bg-body-light">
+                    <div class="content content-full">
+                        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2 text-center text-sm-left">
+                            <div class="flex-sm-fill">
+                                <h1 class="h3 font-w700 mb-2">
+                                    <asp:ContentPlaceHolder ID="pagetitle" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </h1>
+                            </div>
+                            <div class="mt-3 mt-sm-0 ml-sm-3">
+                                <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
+                                    <ol class="breadcrumb breadcrumb-alt">
+                                        <li class="breadcrumb-item">
+                                            <i class="fa fa-home"></i>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a class="link-fx" href="#">
+                                                <asp:ContentPlaceHolder ID="pagebreadcrumb" runat="server">
+                                                </asp:ContentPlaceHolder>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Hero -->
+
+                <!-- Page Content -->
+                <div class="content">
+                    <asp:ContentPlaceHolder ID="PageContant" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!-- END Page Content -->
+            </main>
+            <!-- END Main Container -->
+
+            <!-- Footer -->
+            <footer id="page-footer" class="bg-body-light">
+                <div class="content py-3">
+                    <div class="row font-size-sm">
+                        <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
+                            Jay Sakhiya &nbsp;<a class="font-w600" href="#">180540107141</a>
+                        </div>
+                        <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
+                            Developed By 
+                            <a class="font-w600" href="#" ><strong>Commex infotech</strong></a> &copy; <span data-toggle="year-copy"></span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- END Footer -->
+
+
+        </div>
+        <!-- END Page Container -->
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+<script src="<%= ResolveClientUrl("~/web/AdminPanel/assets/js/oneui.core.min.js") %>"></script>
+
+<script src="<%= ResolveClientUrl("~/web/AdminPanel/assets/js/oneui.app.min.js") %>"></script>
+<!-- Page JS Code -->
+<script src="<%= ResolveClientUrl("~/web/AdminPanel/assets/js/pages/be_pages_dashboard.min.js") %>"></script>
+
+
+
+<script src="<%= ResolveClientUrl("~/web/AdminPanel/assets/js/moment.js") %>"></script>
+<script src="<%= ResolveClientUrl("~/web/AdminPanel/assets/js/plugins/bootstrap-datepicker/js/bootstrap-material-datetimepicker-custom.js") %>"></script>
+
+   <script>$('#PageContant_txtdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+       $('#PageContant_txtStartingdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false }); 
+       $('#PageContant_txtEndingdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });</script> 
+
+   
+
+</html>
