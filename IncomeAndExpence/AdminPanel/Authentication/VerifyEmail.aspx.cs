@@ -129,7 +129,7 @@ public partial class AdminPanel_Authentication_VerifyEmail : System.Web.UI.Page
         smt.Host = "smtp.gmail.com";
         System.Net.NetworkCredential ntwd = new NetworkCredential();
         ntwd.UserName = "commexinfo@gmail.com";   
-        ntwd.Password = "commex@1010";   
+        ntwd.Password = "";   
         smt.UseDefaultCredentials = true;
         smt.Credentials = ntwd;
         smt.Port = 587;

@@ -98,8 +98,8 @@ public partial class AdminPanel_Authentication_CreateNewUser : System.Web.UI.Pag
             SmtpClient smt = new SmtpClient();
             smt.Host = "smtp.gmail.com";
             System.Net.NetworkCredential ntwd = new NetworkCredential();
-            ntwd.UserName = "commexinfo@gmail.com"; //Your Email ID  
-            ntwd.Password = "commex@1010"; // Your Password  
+            ntwd.UserName = "commexinfo@gmail.com"; // Your Email ID  
+            ntwd.Password = ""; // Your Password  
             smt.UseDefaultCredentials = true;
             smt.Credentials = ntwd;
             smt.Port = 587;
